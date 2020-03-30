@@ -6,7 +6,7 @@ import ie.cct.vetclinic.animals.Dog;
 /**
  * Main class of project
  */
-public class Main {
+public class VetClinic {
 
     public static void main(String[] args) {
         System.out.println("*************** Vet Clicnic Application Starts Here ***************");

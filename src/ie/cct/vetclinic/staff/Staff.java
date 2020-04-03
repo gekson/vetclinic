@@ -8,6 +8,12 @@ public class Staff {
     private String name;
     private String salary;
 
+    public Staff(int id, String name, String salary) {
+        this.id = id;
+        this.name = name;
+        this.salary = salary;
+    }
+
     public int getId() {
         return id;
     }
@@ -34,10 +40,8 @@ public class Staff {
 
     @Override
     public String toString() {
-        return "Staff{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", salary='" + salary + '\'' +
-                '}';
+        return  "id=" + id + '\n' +
+                "   name='" + name + '\'' + '\n' +
+                "   salary='" + salary + '\'' + '\n' ;
     }
 }

@@ -9,6 +9,10 @@ public class Rabbit extends Animal {
         super(id, name, age, medicalCondition);
     }
 
+    public Rabbit() {
+
+    }
+
     @Override
     public String toString() {
         return "Rabbit{"+ super.toString() +"} " ;

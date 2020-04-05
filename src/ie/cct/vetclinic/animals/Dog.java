@@ -10,6 +10,10 @@ public class Dog extends Animal {
         super(id, name, age, medicalCondition);
     }
 
+    public Dog() {
+
+    }
+
     @Override
     public String toString() {
         return "Dog{"+ super.toString() +"} " ;

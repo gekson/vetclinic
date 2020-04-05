@@ -2,10 +2,11 @@ package ie.cct.vetclinic.util;
 
 import java.util.*;
 
-public class GeneratorName {
+public class Generator {
 
     private static String[] arrayOfFirstNames = {"Joe", "Donna", "Ronald", "Sarah", "David", "Courtney", "Irwin", "Linda", "Michael", "Cindy", "Tom", "Rebekah", "Todd", "Tracy", "Peter", "Nicole", "Marcelo", "Jennifer", "Rick", "Andrea", "Bruce", "Jaclyn", "Doug", "Shirley", "Steve", "Liz", "Waldo", "Theresa", "Scott", "Colby", "Beth", "Larry", "Emily", "Paul", "Kate", "Sam", "Dianne", "Dustin", "Alethea", "Wayne", "Kristina", "Christian", "Danny", "Breya", "Andrew", "Alison", "Tim", "Mary", "Chris", "Susie", "Jeremy", "Willy", "Jessica", "Marcus", "Kelly", "Kyle", "Stephanie", "Isaiah", "Hillary", "Eric", "Julia", "Donald", "Meredith", "Kevin", "Leslie", "Blake", "Angela", "Cliff", "Debbie", "Dylan", "Erin", "Alex", "Monica", "Nathan", "Wendy", "Josh", "Megan", "Adam", "Michelle", "Carey", "Ashley", "Brian", "Jason", "Melanie", "Jim", "Monica", "Jamie", "Rhonda", "Steven", "Perry", "Byron", "Laura", "Harry", "Brooke", "Drew", "Vicki", "Gary", "Anita", "Felipe", "Josie"};
     private static String[] arrayOfLastNames = {"Smith", "Johnson", "Williams", "Jones", "Brown", "Davis", "Miller", "Wilson", "Moore", "Taylor", "Washington", "Jefferson", "Lincoln", "Hamilton", "Jackson", "Grant", "Franklin", "McKinley", "Cleveland", "Madison", "Chase", "Nicholson", "Fauver", "Doe", "Southard", "Schmidt", "Hodson", "McDonald", "Stickley", "Miller", "Combs", "Bohus", "Krippner", "Amtower", "Banks", "Wallace", "Bannister", "Dehaven", "Yost", "Still", "Timbrook", "Peters", "Vaught", "Shellhammer", "Andrews", "Krippner", "McAlister", "Wright", "Kensinger", "McClellan", "Ganoe", "Shiley", "Layman", "Gearhart", "Yost", "Kushnir", "Bush", "Lowder", "Connolly", "Lowman", "Terveen", "Staton", "Settle", "Tinsman", "Nichols", "Baker", "Walters", "Dawe", "Renner", "Michaels", "Faircloth", "Looker", "Hastings", "Vaughan", "Anderson", "Zimmerman", "Deere", "Daher", "Lauck", "Stottlemyer", "Clinton", "Obama", "Reagan", "Montgomery", "Pugh", "Gavis", "Clark", "Bowers"};
+    private static String[] arrayOfDiseases = {"Kidney disease", "Diabetes", "Arthritis", "Fleas and ticks", "Rabies", "Distemper", "Parvovirus", "Dental disease", "Heartworm", "Obesity", "Lyme disease", "Psittacosis", "Plague", "Q fever", "Campylobacteriosis", "Leptospirosis", "Salmonellosis", "Toxoplasmosis", "Ringworm", "Roundworm", "Tapeworm", "Hookworm", "Capnocytophaga", "Strep zoo"};
 
 //    private static void generate() {
 //        // capital letters 65 - 90
@@ -36,7 +37,7 @@ public class GeneratorName {
 //        System.out.println(name + " " + surname);
 //    }
 
-    public static String generate() {
+    public static String generateName() {
         String first = get(arrayOfFirstNames);
         String last = get(arrayOfLastNames);
         return first + " " + last;
@@ -85,7 +86,11 @@ public class GeneratorName {
         }
 
         String newName = firstName + lastName;
-        System.out.println("Generated name: " + newName + ", with size " + newName.length());
+//        System.out.println("Generated name: " + newName + ", with size " + newName.length());
         return newName;
+    }
+
+    public static String getDiseases() {
+        return get(arrayOfDiseases);
     }
 }

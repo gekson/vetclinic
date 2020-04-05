@@ -8,6 +8,9 @@ public class Cat extends Animal {
         super(id, name, age, medicalCondition);
     }
 
+    public Cat() {
+    }
+
     @Override
     public String toString() {
         return "Cat{"+ super.toString() +"} " ;

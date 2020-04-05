@@ -16,6 +16,10 @@ public class Animal {
         this.medicalCondition = medicalCondition;
     }
 
+    public Animal() {
+
+    }
+
     public int getId() {
         return id;
     }

@@ -3,7 +3,7 @@ package ie.cct.vetclinic.animals;
 /**
  * Animal main class
  */
-public class Animal {
+public abstract class Animal {
     private int id;
     private String name;
     private int age;

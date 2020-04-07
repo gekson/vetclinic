@@ -26,13 +26,16 @@ public class VetClinic {
     private static int numberOfVeterinarianStaff = 5;
     private static List<Staff> listAdminStaff;
     private static List<Staff> listMedicalStaff;
+    private static List<Staff> listAllStaff;
     private static List<Animal> listAnimal;
     private static List<Animal> listTypeAnimal;
+    private static int idStaff = 1;
 
     public static void main(String[] args) {
         System.out.println("*************** Vet Clicnic Application Starts Here ***************");
         listAdminStaff = new ArrayList<>();
         listMedicalStaff = new ArrayList<>();
+        listAllStaff = new ArrayList<>();
         listAnimal = new ArrayList<>();
         listTypeAnimal = new ArrayList<>();
 
@@ -40,41 +43,52 @@ public class VetClinic {
 
         createAdminStaff();
 
-        listAdminStaff.stream().forEach(e -> System.out.println(e.toString()));
+        System.out.println("*************** List Admin Staff ***************");
+//        listAdminStaff.stream().forEach(e -> System.out.println(e.toString()));
 
-        System.out.println("---------------");
+//        System.out.println("---------------");
 
         createMedicalStaff();
 
-        listMedicalStaff.stream().forEach(e -> System.out.println(e.toString()));
+        listAllStaff.addAll(listAdminStaff);
+        listAllStaff.addAll(listMedicalStaff);
+
+//        System.out.println("*************** List Medical Staff ***************");
+//        listMedicalStaff.stream().forEach(e -> System.out.println(e.toString()));
+
+        listAllStaff();
 
         System.out.println("---------------");
         createAnimals();
-        listAnimal.stream().forEach(e -> System.out.println(e.toString()));
+
+//        System.out.println("*************** List Animals ***************");
+//        listAnimal.stream().forEach(e -> System.out.println(e.toString()));
+
+        listStaffByCategorie("Nurse");
     }
 
     private static void createAdminStaff() {
-        for (int i = 0; i < numberOfAdminStaff; i++){
+        for (int i = 0 ; i < numberOfAdminStaff; i++){
             if(i % 2 == 0){
-                listAdminStaff.add(new ItNerd(i, Generator.generateName(), "12"));
+                listAdminStaff.add(new ItNerd(idStaff++, Generator.generateName(), "12"));
                 continue;
             }
-            listAdminStaff.add(new Receptionist(i, Generator.generateName(), "12"));
+            listAdminStaff.add(new Receptionist(idStaff++, Generator.generateName(), "12"));
         }
     }
 
     private static void createMedicalStaff() {
         for (int i = 0; i < 5; i++){
-            listMedicalStaff.add(new Veterinarian(i, Generator.generateName(), "12"));
+            listMedicalStaff.add(new Veterinarian(idStaff++, Generator.generateName(), "12"));
         }
 
 
         for (int i = 0; i < numberOfMedicalStaff - numberOfVeterinarianStaff; i++){
             if(i % 2 == 0){
-                listMedicalStaff.add(new Nurse(i, Generator.generateName(), "12"));
+                listMedicalStaff.add(new Nurse(idStaff++, Generator.generateName(), "12"));
                 continue;
             }
-            listMedicalStaff.add(new TraineeVet(i, Generator.generateName(), "12"));
+            listMedicalStaff.add(new TraineeVet(idStaff++, Generator.generateName(), "12"));
         }
     }
 
@@ -114,5 +128,36 @@ public class VetClinic {
         list.add(new Cat());
         list.add(new Dog());
         list.add(new Rabbit());
+    }
+
+    /**
+     * BASIC FUNCTIONALITY
+     */
+
+    /**
+     * List All Staffs
+     */
+    private static void listAllStaff() {
+        for (Staff staff: listAdminStaff) {
+            System.out.println(staff);
+        }
+
+        for (Staff staff: listMedicalStaff) {
+            System.out.println(staff);
+        }
+    }
+
+    private static void listStaffByCategorie(String categorie){
+
+        List<Staff> listFinal = new ArrayList<>();
+        for (Staff staff: listAllStaff) {
+            if(staff.getClass().getSimpleName().equals(categorie)){
+                listFinal.add(staff);
+            }
+        }
+
+        for (Staff staff: listFinal) {
+            System.out.println(staff);
+        }
     }
 }

@@ -12,8 +12,7 @@ import ie.cct.vetclinic.staff.medical.TraineeVet;
 import ie.cct.vetclinic.staff.medical.Veterinarian;
 import ie.cct.vetclinic.util.Generator;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
@@ -30,6 +29,7 @@ public class VetClinic {
     private static List<Animal> listAnimal;
     private static List<Animal> listTypeAnimal;
     private static int idStaff = 1;
+    private static Map<Integer, List<Animal>> treatmentMap;
 
     public static void main(String[] args) {
         System.out.println("*************** Vet Clicnic Application Starts Here ***************");
@@ -38,6 +38,7 @@ public class VetClinic {
         listAllStaff = new ArrayList<>();
         listAnimal = new ArrayList<>();
         listTypeAnimal = new ArrayList<>();
+        treatmentMap = new HashMap();
 
         populateListTypeAnimal(listTypeAnimal);
 
@@ -56,14 +57,18 @@ public class VetClinic {
 //        System.out.println("*************** List Medical Staff ***************");
 //        listMedicalStaff.stream().forEach(e -> System.out.println(e.toString()));
 
-        listAllStaff();
 
         System.out.println("---------------");
         createAnimals();
 
+        assignAnimal();
+
+
 //        System.out.println("*************** List Animals ***************");
 //        listAnimal.stream().forEach(e -> System.out.println(e.toString()));
 
+        //Put in menu
+        listAllStaff();
         listStaffByCategorie("Nurse");
     }
 
@@ -130,6 +135,20 @@ public class VetClinic {
         list.add(new Rabbit());
     }
 
+    private static void assignAnimal(){
+        Random generator = new Random();
+        for (Animal animal: listAnimal) {
+            int rnd = ThreadLocalRandom.current().nextInt(11, 41);
+            if(treatmentMap.containsKey(rnd)) {
+                treatmentMap.get(rnd).add(animal);
+                continue;
+            }
+            List listAnimalTreatment = new ArrayList<>();
+            listAnimalTreatment.add(animal);
+            treatmentMap.put(rnd, listAnimalTreatment);
+        }
+    }
+
     /**
      * BASIC FUNCTIONALITY
      */
@@ -138,15 +157,15 @@ public class VetClinic {
      * List All Staffs
      */
     private static void listAllStaff() {
-        for (Staff staff: listAdminStaff) {
-            System.out.println(staff);
-        }
-
-        for (Staff staff: listMedicalStaff) {
+        for (Staff staff: listAllStaff) {
             System.out.println(staff);
         }
     }
 
+    /**
+     *
+     * @param categorie
+     */
     private static void listStaffByCategorie(String categorie){
 
         List<Staff> listFinal = new ArrayList<>();

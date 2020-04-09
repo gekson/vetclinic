@@ -36,6 +36,15 @@ public class VetClinic {
     public VetClinic() {
         int choice = 0;
 
+        basicMenu();
+
+    }
+
+    /**
+     * BASIC FUNCTIONALITY
+     */
+    private void basicMenu() {
+        int choice;
         do {
             choice = getUserOption();
 
@@ -45,25 +54,7 @@ public class VetClinic {
                 listAllStaff();
             }
             else if ( choice == 2) {
-                int userNum = 0;
-                do {
-                    userNum = getUserInt("\tPlease enter a number: \n\t1: - list all Nurses" +
-                            "\n\t2: - list all TraineeVet\n\t3: - list all Veterinarians\n\t4: - Return");
-                    switch (userNum) {
-                        case 1 :
-                            listStaffByCategorie("Nurse");
-                            break;
-                        case 2 :
-                            listStaffByCategorie("TraineeVet");
-                            break;
-                        case 3 :
-                            listStaffByCategorie("Veterinarian");
-                            break;
-                        default :
-                            System.out.println("Enter ONLY numbers between 1 and 3!");
-                            break;
-                    }
-                } while (userNum != 4);
+                staffByCategorieSubMenu();
             }
             else if (choice == 3) {
 
@@ -94,7 +85,31 @@ public class VetClinic {
         } while (choice != 8);
 
         System.out.println("Thank you for using this program. Please make cheques payable to Ken Healy.");
+    }
 
+    /**
+     * List staff by categories (e.g. list all Nurses) SubMenu
+     */
+    private void staffByCategorieSubMenu() {
+        int userNum = 0;
+        do {
+            userNum = getUserInt("\tPlease enter a number: \n\t1: - list all Nurses" +
+                    "\n\t2: - list all TraineeVet\n\t3: - list all Veterinarians\n\t4: - Return");
+            switch (userNum) {
+                case 1 :
+                    listStaffByCategorie("Nurse");
+                    break;
+                case 2 :
+                    listStaffByCategorie("TraineeVet");
+                    break;
+                case 3 :
+                    listStaffByCategorie("Veterinarian");
+                    break;
+                default :
+                    System.out.println("Enter ONLY numbers between 1 and 3!");
+                    break;
+            }
+        } while (userNum != 4);
     }
 
     public static void main(String[] args) {
@@ -257,6 +272,11 @@ public class VetClinic {
         return input;
     }
 
+    /**
+     * Return a number input from user
+     * @param myPrompt
+     * @return
+     */
     public int getUserInt(String myPrompt) {
         //prompt user with message myPrompt
         //return a number input from user
